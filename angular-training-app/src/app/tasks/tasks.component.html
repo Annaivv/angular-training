@@ -1,7 +1,10 @@
+@if(isAddingTask) {
+<app-add-task (close)="hideAddTask()" />
+}
 <section class="tasks">
   <header>
     <h2>{{ name }}'s Tasks</h2>
-    <menu><button>Add Task</button></menu>
+    <menu><button (click)="showAddTask()">Add Task</button></menu>
   </header>
   <ul>
     @for (task of selectedUserTasks; track task.id) {
