@@ -1,5 +1,5 @@
 @if(isAddingTask) {
-<app-add-task (close)="hideAddTask()" />
+<app-add-task (close)="hideAddTask()" (add)="onAddTask($event)" />
 }
 <section class="tasks">
   <header>
