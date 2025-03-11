@@ -1,4 +1,7 @@
 import {
+  AfterContentInit,
+  afterNextRender,
+  afterRender,
   Component,
   contentChild,
   ContentChild,
@@ -20,7 +23,7 @@ import {
     '(click)': 'onClick()',
   },
 })
-export class ControlComponent {
+export class ControlComponent implements AfterContentInit {
   label = input.required<string>();
   private el = inject(ElementRef);
   // @ContentChild('input') private control?: ElementRef<
@@ -28,6 +31,17 @@ export class ControlComponent {
   // >;
   private control =
     contentChild<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input');
+
+  constructor() {
+    afterRender(() => {
+      console.log('After Render');
+    });
+    afterNextRender(() => {
+      console.log('After Next Render');
+    });
+  }
+
+  ngAfterContentInit() {}
 
   onClick() {
     console.log('clicked');
