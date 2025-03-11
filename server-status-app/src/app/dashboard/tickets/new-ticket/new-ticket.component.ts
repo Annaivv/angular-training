@@ -20,6 +20,8 @@ import { ControlComponent } from '../../../shared/control/control.component';
 export class NewTicketComponent implements AfterViewInit {
   // @ViewChild('form') form?: ElementRef<HTMLFormElement>;
   private form = viewChild.required<ElementRef<HTMLFormElement>>('form');
+  enteredTitle = '';
+  enteredText = '';
   add = output<{ title: string; text: string }>();
 
   ngAfterViewInit(): void {
@@ -27,9 +29,11 @@ export class NewTicketComponent implements AfterViewInit {
     console.log(this.form().nativeElement);
   }
 
-  onSubmit(title: string, ticketText: string) {
-    this.add.emit({ title, text: ticketText });
+  onSubmit() {
+    this.add.emit({ title: this.enteredTitle, text: this.enteredText });
     // this.form?.nativeElement.reset();
-    this.form().nativeElement.reset();
+    // this.form().nativeElement.reset();
+    this.enteredTitle = '';
+    this.enteredText = '';
   }
 }
