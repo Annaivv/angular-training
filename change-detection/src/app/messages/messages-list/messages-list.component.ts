@@ -22,9 +22,9 @@ export class MessagesListComponent {
   private messagesService = inject(MessagesService);
 
   // With AsyncPipe
-  messages$ = this.messagesService.messages$;
+  // messages$ = this.messagesService.messages$;
 
-  // messages = this.messagesService.allMessages;
+  messages = this.messagesService.allMessages;
 
   // Code for manual change detection
   // messages: string[] = [];
