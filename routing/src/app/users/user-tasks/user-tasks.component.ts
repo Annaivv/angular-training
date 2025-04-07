@@ -1,6 +1,7 @@
-import { Component, computed, inject, input } from '@angular/core';
+import { Component, computed, inject, input, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
 import {
+  ActivatedRoute,
   ActivatedRouteSnapshot,
   ResolveFn,
   RouterLink,
@@ -17,6 +18,9 @@ import {
 })
 export class UserTasksComponent {
   userName = input.required<string>();
+  message = input.required<string>();
+  // private activatedRoute = inject(ActivatedRoute);
+
   // userId = input.required<string>();
   // private usersService = inject(UsersService);
 
@@ -24,6 +28,14 @@ export class UserTasksComponent {
   //   () =>
   //     this.usersService.users.find((user) => user.id === this.userId())?.name
   // );
+
+  // ngOnInit(): void {
+  //   this.activatedRoute.data.subscribe({
+  //     next: (data) => {
+  //       console.log(data);
+  //     },
+  //   });
+  // }
 }
 
 export const resolveUserName: ResolveFn<string> = (
