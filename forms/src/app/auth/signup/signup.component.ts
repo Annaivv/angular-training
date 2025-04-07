@@ -1,5 +1,6 @@
 import { Component, DestroyRef, inject } from '@angular/core';
 import {
+  FormArray,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
@@ -39,13 +40,16 @@ export class SignupComponent {
     role: new FormControl<
       'student' | 'teacher' | 'employee' | 'founder' | 'other'
     >('student', { validators: [Validators.required] }),
+    source: new FormArray([
+      new FormControl(false),
+      new FormControl(false),
+      new FormControl(false),
+    ]),
     agree: new FormControl(false, { validators: [Validators.required] }),
   });
 
   onSubmit() {
-    const enteredEmail = this.form.value.email;
-    // const enteredPassword = this.form.value.passwords.password;
-    console.log(enteredEmail);
+    console.log(this.form);
   }
 
   onReset() {
